@@ -1,0 +1,30 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  @media (max-width: 768px) {
+    /* CSS in here for mobile only */
+    .view{
+        position: fixed;
+        top: 24%;
+        left: 15%
+    }
+  }
+  
+  @media (min-width: 769px) {
+    /* CSS in here for desktop only */
+    .view{
+        position: fixed;
+        top: 24%;
+        left: 40%;
+    }
+  }

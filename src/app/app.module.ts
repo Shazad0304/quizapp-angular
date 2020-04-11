@@ -10,14 +10,20 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 import { QuestiongetterService } from './questiongetter.service';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './login/login.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainContentComponent
+    MainContentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +34,12 @@ import { ToastrModule } from 'ngx-toastr';
     MatToolbarModule,
     MatProgressSpinnerModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [QuestiongetterService],
   bootstrap: [AppComponent]

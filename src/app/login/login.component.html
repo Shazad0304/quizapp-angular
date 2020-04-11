@@ -1,0 +1,27 @@
+<mat-card class="example-card view">
+    <mat-card-header>
+        <mat-card-title style="margin-left: 100%">Login</mat-card-title>
+      </mat-card-header>
+    <mat-card-content>
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Contact Number</mat-label>
+              <input type="number" matInput placeholder="Contact Number" [formControl]="number" required>
+              <mat-error *ngIf="number.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
+          <br>
+          <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput placeholder="Password" [formControl]="pass" required>
+              <mat-error *ngIf="pass.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" style="margin-left: 30%" (click)='checkuser()' >Login</button>
+    </mat-card-actions>
+  </mat-card>
+
+  

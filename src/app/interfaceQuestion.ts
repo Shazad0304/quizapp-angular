@@ -10,3 +10,9 @@ export interface IAns{
     question:string,
     answer:string
 }
+
+export interface IUsers{
+    user: number,
+    pass: string,
+    name: string
+}

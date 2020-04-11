@@ -52,8 +52,12 @@ console.log(ev)
   }
 
   changeq(){
+    this.toastr.success('Submitted','',{
+      timeOut: 2000
+    })
     this.count = this.count +1;
     this.timeLeft = 10;
+
   }
 
   oberserableTimer() {
@@ -64,6 +68,7 @@ console.log(ev)
     });
   }
 
+  
   startTimer() {
     this.interval = setInterval(() => {
       if(this.timeLeft > 1) {
