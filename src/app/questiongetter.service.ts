@@ -12,10 +12,10 @@ currentUser:string
   constructor(private http: HttpClient) { }
 
   getQues(): Observable<IQuestion[]>{
-    return this.http.get<IQuestion[]>('https://fantasy-b286e.firebaseio.com/quizs.json');
+    return this.http.get<IQuestion[]>();
   }
 
   getUsers():Observable<IUsers[]>{
-    return this.http.get<IUsers[]>('https://fantasy-b286e.firebaseio.com/users.json');
+    return this.http.get<IUsers[]>();
   }
 }
