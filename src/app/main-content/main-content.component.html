@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>QUIZ APP</span>
+    <span class="example-spacer"></span>
+    <a mat-raised-button routerLink=".">LOGIN</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="view">
+
+<mat-card class="example-card">
+  <mat-card-header>
+    
+    <mat-card-title>{{count +1}}: {{data[count].question}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group">
+      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt1">
+        {{data[count].opt1}}
+      </mat-radio-button>
+      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt2">
+        {{data[count].opt2}}
+      </mat-radio-button>
+      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt3">
+        {{data[count].opt3}}
+      </mat-radio-button>
+      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt4">
+        {{data[count].opt4}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </mat-card-content>
+  <mat-card-actions>
+    <button style="float: right;" mat-raised-button color="primary" (click)='changeq()'>Submit</button>
+  </mat-card-actions>
+</mat-card>
+<div style="display: flex;flex-direction: column;justify-content: center;">
+<mat-spinner [color]="this.timeLeft < 6? 'warn': 'primary'" style="margin: 0 auto;"></mat-spinner>
+<h1 style="text-align: center;">{{this.timeLeft}}</h1>
+</div>
+</div>
+
+<div class="footer">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Copyright 2020</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+</div>
+
+
