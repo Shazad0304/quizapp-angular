@@ -6,6 +6,14 @@
     justify-content: space-evenly;
     margin-top: 10%;
   }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: -webkit-fill-available;
+    margin-top: 20%;
+  }
 }
 
 @media (min-width: 769px) {
@@ -16,7 +24,15 @@
     justify-content: space-evenly;
     margin-top: 10%;
   }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
 }
+
+
 
 .example-radio-group {
     display: flex;

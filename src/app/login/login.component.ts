@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   number = new FormControl('', [Validators.required]);
   pass = new FormControl('', [Validators.required]);
+  check = false;
   constructor(private auth:AuthguardService,private router:Router) { }
 
   ngOnInit(): void {
@@ -23,6 +24,9 @@ export class LoginComponent implements OnInit {
     this.auth.user = this.number.value;
     this.auth.pass = this.pass.value;
     this.router.navigate(['main']);
+  }
+  proceed(){
+    this.check = true;
   }
 
  

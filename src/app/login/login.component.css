@@ -16,7 +16,12 @@
     .view{
         position: fixed;
         top: 24%;
-        left: 15%
+        left: 15%;
+        margin: auto;
+    }
+    .viewrules{
+      position: fixed;
+        margin: auto;
     }
   }
   
@@ -26,5 +31,13 @@
         position: fixed;
         top: 24%;
         left: 40%;
+        margin: auto;
+    }
+    .viewrules{
+      position: fixed;
+        top: 15%;
+        left: 30%;
+        margin: auto;
     }
   }
+

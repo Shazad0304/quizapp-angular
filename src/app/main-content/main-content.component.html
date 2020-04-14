@@ -1,7 +1,6 @@
 
 
-<div class="view">
-
+<div class="view" *ngIf='!check'>
 <mat-card class="example-card">
   <mat-card-header>
     
@@ -11,18 +10,18 @@
   <mat-card-content>
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
-      class="example-radio-group">
-      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt1">
-        {{data[count].opt1}}
+      class="example-radio-group" [(ngModel)]="answer">
+      <mat-radio-button [color]='"primary"' class="example-radio-button" [value]="1">
+        {{data[count].opt1[0] == '*'?data[count].opt1.replace('*',''):data[count].opt1}}
       </mat-radio-button>
-      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt2">
-        {{data[count].opt2}}
+      <mat-radio-button [color]='"primary"' class="example-radio-button" [value]="2">
+        {{data[count].opt2[0] == '*'?data[count].opt2.replace('*',''):data[count].opt2}}
       </mat-radio-button>
-      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt3">
-        {{data[count].opt3}}
+      <mat-radio-button [color]='"primary"' class="example-radio-button" [value]="3">
+        {{data[count].opt3[0] == '*'?data[count].opt3.replace('*',''):data[count].opt3}}
       </mat-radio-button>
-      <mat-radio-button [color]='"primary"' class="example-radio-button" (change)='ok($event)' [value]="data[count].opt4">
-        {{data[count].opt4}}
+      <mat-radio-button [color]='"primary"' class="example-radio-button" [value]="4">
+        {{data[count].opt4[0] == '*'?data[count].opt4.replace('*',''):data[count].opt4}}
       </mat-radio-button>
     </mat-radio-group>
   </mat-card-content>
@@ -34,6 +33,11 @@
 <mat-spinner [color]="this.timeLeft < 6? 'warn': 'primary'" style="margin: 0 auto;"></mat-spinner>
 <h1 style="text-align: center;">{{this.timeLeft}}</h1>
 </div>
+</div>
+
+<div *ngIf='check'>
+  <img src='assets/thank.png' class="center">
+  <h1 style="text-align: center;">Results Will Be Posted To YSBN Official Group</h1>
 </div>
 
 

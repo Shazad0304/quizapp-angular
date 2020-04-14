@@ -12,7 +12,13 @@ export interface IAns{
 }
 
 export interface IUsers{
-    user: number,
+    user: string,
     pass: string,
     name: string
+}
+
+export interface IResults{
+    name:string,
+    number:string,
+    points?:number
 }
