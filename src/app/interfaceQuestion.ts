@@ -15,10 +15,11 @@ export interface IUsers{
     user: string,
     pass: string,
     name: string
+    points?: number
 }
 
 export interface IResults{
     name:string,
-    number:string,
+    user:string,
     points?:number
 }

@@ -14,14 +14,14 @@
   @media (max-width: 768px) {
     /* CSS in here for mobile only */
     .view{
-        position: fixed;
+        position: absolute;
         top: 24%;
         left: 15%;
-        margin: auto;
+        margin-bottom: 20%;
     }
     .viewrules{
-      position: fixed;
-        margin: auto;
+      position: absolute;
+     margin-bottom: 20%;
     }
   }
   

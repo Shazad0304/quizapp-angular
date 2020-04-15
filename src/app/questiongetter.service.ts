@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class QuestiongetterService {
 currentUser:IResults
-result:IResults[]
+Index:number
 
   constructor(private http: HttpClient) { }
 
@@ -21,13 +21,13 @@ result:IResults[]
     return this.http.get<IUsers[]>('');
   }
 
-  getPoints(){
-    this.http.get<IResults[]>('').subscribe(x => this.result = x);
+  getPoints():Observable<IResults[]>{
+    return this.http.get<IResults[]>('');
   }
 
+
   postPoints(data:IResults){
-    this.result.push(data);
-    this.http.put('',this.result,{
+    this.http.patch('',{[this.Index]:data},{
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })

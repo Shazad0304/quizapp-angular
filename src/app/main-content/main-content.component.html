@@ -29,7 +29,7 @@
     <button style="float: right;" mat-raised-button color="primary" (click)='changeq()'>Submit</button>
   </mat-card-actions>
 </mat-card>
-<div style="display: flex;flex-direction: column;justify-content: center;">
+<div style="display: flex;flex-direction: column;justify-content: center;margin-bottom: 40px;margin-top: 10px;">
 <mat-spinner [color]="this.timeLeft < 6? 'warn': 'primary'" style="margin: 0 auto;"></mat-spinner>
 <h1 style="text-align: center;">{{this.timeLeft}}</h1>
 </div>
