@@ -1,5 +1,5 @@
 .example-card {
-    max-width: 400px;
+    max-width: 600px;
   }
   
   .example-header-image {
@@ -14,10 +14,10 @@
   @media (max-width: 768px) {
     /* CSS in here for mobile only */
     .view{
-        position: absolute;
-        top: 24%;
-        left: 15%;
-        margin-bottom: 20%;
+      display: flex;
+      justify-content: space-around;
+      margin: 0% 86px 10px 47px;
+      flex-direction:column;
     }
     .viewrules{
       position: absolute;
@@ -28,10 +28,9 @@
   @media (min-width: 769px) {
     /* CSS in here for desktop only */
     .view{
-        position: fixed;
-        top: 24%;
-        left: 40%;
-        margin: auto;
+      display: flex;
+      justify-content: space-around;
+      margin: 5% 0px 0px 0px
     }
     .viewrules{
       position: fixed;

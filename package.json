@@ -24,8 +24,10 @@
     "@angular/service-worker": "~9.0.6",
     "ngx-bootstrap": "^5.6.1",
     "ngx-toastr": "^12.0.1",
+    "ngx-webcam": "^0.3.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "webcam-easy": "^1.0.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

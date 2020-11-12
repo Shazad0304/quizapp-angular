@@ -1,36 +1,58 @@
-import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
-import {IQuestion, IUsers, IResults} from './interfaceQuestion';
-import { Observable } from 'rxjs';
-
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { IQuestion, IUsers, IResults } from "./interfaceQuestion";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class QuestiongetterService {
-currentUser:IResults
-Index:number
+  currentUser: IResults;
+  Index: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getQues(): Observable<IQuestion[]>{
-    return this.http.get<IQuestion[]>('');
+  Login(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post("http://localhost:8080/auth/login", data).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
   }
 
-  getUsers():Observable<IUsers[]>{
-    return this.http.get<IUsers[]>('');
+  Register(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post("http://localhost:8080/auth/register", data).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
   }
 
-  getPoints():Observable<IResults[]>{
-    return this.http.get<IResults[]>('');
+  getQuizBycode(code) {
+    return new Promise((resolve, reject) => {
+      this.http.get(`http://localhost:8080/quiz/get/${code}`).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
   }
 
-
-  postPoints(data:IResults){
-    this.http.patch('',{[this.Index]:data},{
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    }).subscribe(data => data,error => console.log(error));
+  saveAnswers(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post("http://localhost:8080/quiz/saveanswer", data).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
   }
 }

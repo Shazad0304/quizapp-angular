@@ -1,9 +1,9 @@
 export interface IQuestion{
-    question:string,
-    opt1:string,
-    opt2:string,
-    opt3:string,
-    opt4:string,
+    questions:{
+        question:string,
+        options:string[]
+    }
+
 }
 
 export interface IAns{
@@ -19,7 +19,10 @@ export interface IUsers{
 }
 
 export interface IResults{
-    name:string,
-    user:string,
-    points?:number
+    code:String,
+    attemptedBy:String,
+    answers:{
+        ques:String,
+        ans:String
+    }[]
 }

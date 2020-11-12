@@ -1,50 +1,212 @@
-<mat-card *ngIf='check' class="example-card view">
+<div class="view">
+  <mat-card style="max-height: 257px" *ngIf="check && !showcode" class="example-card mat-elevation-z4">
     <mat-card-header>
-        <mat-card-title style="margin-left: 100%">Login</mat-card-title>
-      </mat-card-header>
+      <mat-card-title >Login</mat-card-title>
+    </mat-card-header>
     <mat-card-content>
-        <div class="example-container">
-            <mat-form-field appearance="fill">
-              <mat-label>Contact Number(Last 5 Digits)</mat-label>
-              <input type="number" matInput placeholder="Contact Number(Last 5 Digits)" [formControl]="number" required>
-              <mat-error *ngIf="number.invalid">Required</mat-error>
-            </mat-form-field>
-          </div>
-          <br>
-          <div class="example-container">
-            <mat-form-field appearance="fill">
-              <mat-label>Password</mat-label>
-              <input type="password" matInput placeholder="Password" [formControl]="pass" required>
-              <mat-error *ngIf="pass.invalid">Required</mat-error>
-            </mat-form-field>
-          </div>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary" style="margin-left: 30%" (click)='checkuser()' >Login</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card *ngIf='!check' class="example-card viewrules">
-    <mat-card-header>
-        <mat-card-title>Dear Participants, Following are some instructions, Please read it carefully</mat-card-title>
-      </mat-card-header>
-    <mat-card-content>
-      <div>
-        <ol>
-          <li>Quiz will only be available for 30 mins.</li>
-          <li>Participant should have to login in those 30 mins.</li>
-          <li>There is only one time login if you try to log out from website or close that website then your quiz marks will be considered as zero.</li>
-          <li>Last 5 digits of your Number (Provided when you filled registration form) will be your USERNAME for login.</li>
-          <li>In registration form each participant has entered password, that will be your password for login.</li>
-          <li>There will be total 50 questions</li>
-          <li>Each question will have 15 sec time for which TIMER will be visible when you start your quiz.</li>
-          <li>After 15 second next question will appear.</li>
-          <li>Participant have to solve all 50 questions for marking otherwise your Quiz will be considered as ZERO.</li>
-        </ol>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Email ID</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Email Address"
+            [formControl]="number"
+            required
+          />
+          <mat-error *ngIf="number.invalid">Email Invalid</mat-error>
+        </mat-form-field>
+      </div>
+      <br />
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            [formControl]="pass"
+            required
+          />
+          <mat-error *ngIf="pass.invalid">Required</mat-error>
+        </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" (click)='proceed()' >Proceed</button>
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin-left: 30%"
+        (click)="checkuser()"
+      >
+        Login
+      </button>
     </mat-card-actions>
   </mat-card>
-  
+
+  <mat-card *ngIf="check && !showcode" class="example-card mat-elevation-z4">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="First Name"
+            [formControl]="fname"
+            required
+          />
+          <mat-error *ngIf="fname.invalid">Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Last name"
+            [formControl]="lname"
+            required
+          />
+          <mat-error *ngIf="lname.invalid">Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Email ID</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Email Address"
+            [formControl]="email"
+            required
+          />
+          <mat-error *ngIf="email.invalid">Email Invalid</mat-error>
+        </mat-form-field>
+      </div>
+      <br />
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            [formControl]="password"
+            required
+          />
+          <mat-error *ngIf="password.invalid">Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Confirm Password"
+            [formControl]="cpassword"
+            required
+          />
+          <mat-error *ngIf="cpassword.invalid">Required</mat-error>
+          <mat-error *ngIf="!cpassword.invalid && password.value != cpassword.value">Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-select [formControl]="userRole" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="userRole.hasError('required')">Please choose an role</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin-left: 30%"
+        (click)="register()"
+      >
+        Register
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<mat-card *ngIf="!check && !showcode" class="example-card viewrules">
+  <mat-card-header>
+    <mat-card-title
+      >Dear Participants, Following are some instructions, Please read it
+      carefully</mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <ol>
+        <li>Quiz Can be attempted only one time</li>
+        <li>
+          Each question will have 15 sec time for which TIMER will be visible
+          when you start your quiz.
+        </li>
+        <li>After 15 second next question will appear.</li>
+        <li>
+          Participant have to solve all questions for marking otherwise your
+          Quiz will be considered as ZERO.
+        </li>
+        <li>
+          Please allow the camera access to attempt the quiz otherwise you can't take quiz
+        </li>
+        <li>
+          Snaps will be taken on random interval
+        </li>
+      </ol>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="proceed()">
+      Proceed
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+
+<mat-card style="margin: auto;" *ngIf="showcode" class="example-card mat-elevation-z4">
+  <mat-card-header>
+    <mat-card-title>Enter Quiz Code</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="example-container">
+      <mat-form-field style="width: 100%;" appearance="fill">
+        <mat-label>Code</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Code"
+          [formControl]="code"
+          required
+        />
+        <mat-error *ngIf="code.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      style="margin-left: 40%"
+      (click)="beginQuiz()"
+    >
+      Start Quiz
+    </button>
+  </mat-card-actions>
+</mat-card>
+
