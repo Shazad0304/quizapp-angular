@@ -24,9 +24,7 @@
 <mat-spinner [color]="this.timeLeft < 6? 'warn': 'primary'" style="margin: 0 auto;"></mat-spinner>
 <h1 style="text-align: center;">{{this.timeLeft}}</h1>
 </div>
-</div>
 <webcam [height]="500" (initError)="handleInitError($event)" hidden [width]="500" [trigger]="triggerObservable"  (imageCapture)="handleImage($event)"></webcam>
-<!-- Button Takes Photo -->
 
 <!-- Snapshot Div where image will be shown -->
 
@@ -34,7 +32,3 @@
   <img src='assets/thank.png' class="center">
   <h1 style="text-align: center;">Result is sended to your instructor</h1>
 </div>
-
-
-
-

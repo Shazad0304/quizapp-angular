@@ -1,0 +1,27 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.column>mat-form-field {
+  max-width: fit-content;
+}
+
+.column>button {
+  max-width: fit-content;
+}
+
+.pad {
+  padding-left: 10px;
+}
+
+.button {
+  margin-top: 10px;
+}
