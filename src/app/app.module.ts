@@ -19,6 +19,10 @@ import { ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { QuizListModule } from './quiz-list/quiz-list.module';
+import { AddQuizModule } from './add-quiz/add-quiz.module';
+import { CommonModule } from '@angular/common';
+import { AttemptedListModule } from './quiz-list/attempted-list/attempted-list.module';
 
 
 @NgModule({
@@ -42,7 +46,11 @@ import { environment } from '../environments/environment';
     ToastrModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    QuizListModule,
+    AddQuizModule,
+    CommonModule,
+    AttemptedListModule
   ],
   providers: [QuestiongetterService],
   bootstrap: [AppComponent]
