@@ -1,50 +1,79 @@
-<div class="content-card">
-    <mat-table class="quiz-table" #table [dataSource]="dataSource">
+<div class="content-card" style="padding: 30px">
+  <div style="margin: 10px;">
+    <button mat-raised-button color="primary" (click)="navigatetoadd()">Add Quiz</button>
+  </div>
+  <mat-table class="quiz-table" #table [dataSource]="dataSource">
+    <ng-container matColumnDef="createdDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Created Date</mat-header-cell
+      >
+      <mat-cell *matCellDef="let quiz">
+        <p>{{ quiz.createdAt ? quiz.createdAt : "---" }}</p>
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="createdDate">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Created Date</mat-header-cell>
-            <mat-cell *matCellDef="let quiz">
-                <p>{{quiz.createDate ? quiz.createDate : '---'}}</p>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-cell *matCellDef="let quiz">
+        <p>{{ quiz.title ? quiz.title : "---" }}</p>
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="title">
-            <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-            <mat-cell *matCellDef="let quiz">
-                <p>{{quiz.title ? quiz.title : '---'}}</p>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="code">
+      <mat-header-cell *matHeaderCellDef>Quiz Code</mat-header-cell>
+      <mat-cell *matCellDef="let quiz">
+        <p>{{ quiz.code ? quiz.code : "---" }}</p>
+      </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="active">
-            <mat-header-cell style="max-width: 40px;" *matHeaderCellDef></mat-header-cell>
-            <mat-cell style="max-width: fit-content;" *matCellDef="let quiz">
-                <button mat-icon-button [matMenuTriggerFor]="listActionsMenu" aria-label="More actions menu">
-                    <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #listActionsMenu="matMenu">
-                    <button mat-menu-item>
-                        <mat-icon>preview</mat-icon>
-                        <span>View</span>
-                    </button>
-                    <button mat-menu-item>
-                        <mat-icon>delete</mat-icon>
-                        <span>Delete</span>
-                    </button>
-                </mat-menu>
-            </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="active">
+      <mat-header-cell
+        style="max-width: 40px"
+        *matHeaderCellDef
+      ></mat-header-cell>
+      <mat-cell style="max-width: fit-content" *matCellDef="let quiz">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="listActionsMenu"
+          aria-label="More actions menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #listActionsMenu="matMenu">
+          <button mat-menu-item (click)="navigatetoresult(quiz.code)">
+            <mat-icon>preview</mat-icon>
+            <span>View Results</span>
+          </button>
+          <button mat-menu-item (click)="deletequiz(quiz.code)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns; sticky: true"
+    ></mat-header-row>
 
-        <mat-row *matRowDef="let quiz; columns: displayedColumns;" class="product" matRipple>
-        </mat-row>
-    </mat-table>
+    <mat-row
+      *matRowDef="let quiz; columns: displayedColumns"
+      class="product"
+      matRipple
+    >
+    </mat-row>
+  </mat-table>
 
-    <!-- <div class="no-user-found">
+  <!-- <div class="no-user-found">
         <h4>No Record Found</h4>
     </div> -->
 
-    <mat-paginator #paginator [length]="totalLength" [pageSize]="limit" [pageSizeOptions]="pageLimit">
-        <!-- (page)="changePage($event)" -->
-    </mat-paginator>
+  <mat-paginator
+    #paginator
+    [length]="totalLength"
+    [pageSize]="limit"
+    [pageSizeOptions]="pageLimit"
+  >
+    <!-- (page)="changePage($event)" -->
+  </mat-paginator>
 </div>

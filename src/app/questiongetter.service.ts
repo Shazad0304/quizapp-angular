@@ -10,11 +10,13 @@ export class QuestiongetterService {
   currentUser: IResults;
   Index: number;
 
+  baseurl = "http://localhost:8080";
+
   constructor(private http: HttpClient) {}
 
   Login(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost:8080/auth/login", data).subscribe(
+      this.http.post(`${this.baseurl}/auth/login`, data).subscribe(
         (x) => {
           resolve(x);
         },
@@ -25,7 +27,7 @@ export class QuestiongetterService {
 
   Register(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost:8080/auth/register", data).subscribe(
+      this.http.post(`${this.baseurl}/auth/register`, data).subscribe(
         (x) => {
           resolve(x);
         },
@@ -36,7 +38,7 @@ export class QuestiongetterService {
 
   getQuizBycode(code) {
     return new Promise((resolve, reject) => {
-      this.http.get(`http://localhost:8080/quiz/get/${code}`).subscribe(
+      this.http.get(`${this.baseurl}/quiz/get/${code}`).subscribe(
         (x) => {
           resolve(x);
         },
@@ -47,7 +49,51 @@ export class QuestiongetterService {
 
   saveAnswers(data) {
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost:8080/quiz/saveanswer", data).subscribe(
+      this.http.post(`${this.baseurl}/quiz/saveanswer`, data).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
+  }
+
+  getAllQuizByUser(id){
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.baseurl}/quiz/getall/${id}`).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
+  }
+
+  getAllScoreBycode(code){
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.baseurl}/quiz/getallanswers/${code}`).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
+  }
+
+  AddQuiz(data){
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.baseurl}/quiz/add`, data).subscribe(
+        (x) => {
+          resolve(x);
+        },
+        (err) => reject(err)
+      );
+    });
+  }
+
+  delquiz(code){
+    return new Promise((resolve, reject) => {
+      this.http.delete(`${this.baseurl}/quiz/delete/${code}`).subscribe(
         (x) => {
           resolve(x);
         },

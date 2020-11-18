@@ -6,11 +6,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AuthguardteacherService } from 'src/app/authguardteacher.service';
 
 const routes = [
     {
         path: 'attempted-list/:id',
         component: AttemptedListComponent,
+        canActivate:[AuthguardteacherService]
     }
 ];
 
@@ -24,7 +27,8 @@ const routes = [
         MatTooltipModule,
         MatMenuModule,
         MatPaginatorModule,
-        MatIconModule
+        MatIconModule,
+        MatDialogModule
     ],
     providers: []
 })

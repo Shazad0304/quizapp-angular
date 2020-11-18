@@ -6,11 +6,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { AuthguardteacherService } from '../authguardteacher.service';
 
 const routes = [
     {
         path: 'quiz-list',
         component: QuizListComponent,
+        canActivate:[AuthguardteacherService]
     }
 ];
 
@@ -24,7 +27,8 @@ const routes = [
         MatTooltipModule,
         MatMenuModule,
         MatPaginatorModule,
-        MatIconModule
+        MatIconModule,
+        MatButtonModule
     ],
     providers: []
 })

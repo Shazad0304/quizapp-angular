@@ -21,6 +21,7 @@ export interface IUsers{
 export interface IResults{
     code:String,
     attemptedBy:String,
+    images:String[]
     answers:{
         ques:String,
         ans:String

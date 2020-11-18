@@ -1,0 +1,16 @@
+<h1
+  mat-dialog-title
+  style="font-weight: 500; font-size: 36px; text-align: center"
+>
+  Participant Snaps
+</h1>
+<div mat-dialog-content>
+  <img
+    *ngFor="let snap of data.images"
+    [src]="snap"
+    style="width: 400px; margin-top: 10px"
+  />
+</div>
+<div mat-dialog-actions>
+
+</div>

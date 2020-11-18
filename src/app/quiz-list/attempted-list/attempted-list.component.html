@@ -1,22 +1,36 @@
-<div class="content-card">
+<div class="content-card" style="padding: 30px;">
     <mat-table class="student-table" #table [dataSource]="dataSource">
 
         <ng-container matColumnDef="date">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Created Date</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Submitted Date</mat-header-cell>
             <mat-cell *matCellDef="let student">
-                <p>{{student.date ? student.date : '---'}}</p>
+                <p>{{student.createdAt ? student.createdAt : '---'}}</p>
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+        <ng-container matColumnDef="fname">
+            <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
             <mat-cell *matCellDef="let student">
-                <p>{{student.name ? student.name : '---'}}</p>
+                <p>{{student.firstName ? student.firstName : '---'}}</p>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lname">
+            <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+            <mat-cell *matCellDef="let student">
+                <p>{{student.lastName ? student.lastName : '---'}}</p>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+            <mat-cell *matCellDef="let student">
+                <p>{{student.email ? student.email : '---'}}</p>
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="score">
-            <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Score</mat-header-cell>
             <mat-cell *matCellDef="let student">
                 <p>{{student.score ? student.score : '---'}}</p>
             </mat-cell>
@@ -29,9 +43,9 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #listActionsMenu="matMenu">
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="openDialog(student.images)">
                         <mat-icon>preview</mat-icon>
-                        <span>View</span>
+                        <span>View Snaps</span>
                     </button>
                 </mat-menu>
             </mat-cell>

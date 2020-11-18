@@ -7,11 +7,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { RouterModule } from '@angular/router';
 import { AddQuizComponent } from './add-quiz.component';
+import {MatCardModule} from '@angular/material/card';
+import { AuthguardteacherService } from '../authguardteacher.service';
 
 const routes = [
     {
-        path: 'add-quiz',
+        path: 'addquiz',
         component: AddQuizComponent,
+        canActivate:[AuthguardteacherService]
     }
 ];
 
@@ -26,7 +29,8 @@ const routes = [
         MatRadioModule,
         CommonModule,
         FormsModule,
-        MatButtonModule
+        MatButtonModule,
+        MatCardModule
     ],
     providers: []
 })

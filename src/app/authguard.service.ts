@@ -9,13 +9,13 @@ import { QuestiongetterService } from './questiongetter.service';
 })
 export class AuthguardService {
 
-
+  entity:any = JSON.parse(localStorage.getItem("quiz-user"));
   constructor(private router:Router,private toastr: ToastrService,private getdata:QuestiongetterService) {
 
    }
 
   canActivate(): boolean {
-      if(localStorage.getItem("quiz-user")){
+      if(this.entity && this.entity.type.toLowerCase() === "student"){
         return true;
       }
       else{

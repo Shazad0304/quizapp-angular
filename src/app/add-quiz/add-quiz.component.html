@@ -1,33 +1,63 @@
-<div class="pad column" id="add-quiz">
-    <div>
-        <h3>Quiz Title</h3>
-        <mat-form-field appearance="outline">
+<div style="padding: 30px;">
+  <mat-card style="margin: auto" class="example-card mat-elevation-z4">
+    <mat-card-content>
+      <div class="pad column" id="add-quiz">
+        <div>
+          <h3>Quiz Title</h3>
+          <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput type="text" [(ngModel)]="title"/>
-        </mat-form-field>
-    </div>
-    <div *ngFor="let q of questions; let i = index">
-        <div class="column">
-            <h3>Question {{i+1}}</h3>
-            <mat-form-field style="min-width: 200px;" appearance="outline">
-                <mat-label>Question</mat-label>
-                <textarea matInput [(ngModel)]="questions[i].quetion"></textarea>
-            </mat-form-field>
+            <input matInput type="text" [(ngModel)]="title" />
+          </mat-form-field>
         </div>
-        <div class="column">
+        <div *ngFor="let q of questions; let i = index">
+          <div class="column">
+            <h3>Question {{ i + 1 }}</h3>
+            <mat-form-field style="min-width: 200px" appearance="outline">
+              <mat-label>Question</mat-label>
+              <textarea matInput [(ngModel)]="questions[i].question"></textarea>
+            </mat-form-field>
+          </div>
+          <div class="column">
             <p>Put correct answer in the first option</p>
-            <mat-form-field appearance="outline" *ngFor="let option of questions[i].options; let j = index">
-                <mat-label>Option</mat-label>
-                <input matInput type="text" [(ngModel)]="questions[i].options[j]" />
+            <mat-form-field
+              appearance="outline"
+              *ngFor="let option of questions[i].options; let j = index"
+            >
+              <mat-label>Option</mat-label>
+              <input
+                matInput
+                type="text"
+                [(ngModel)]="questions[i].options[j]"
+              />
             </mat-form-field>
 
-            <button class="button" mat-raised-button color="primary" (click)="addOption(i)">Add Opption</button>
+            <button
+              class="button"
+              mat-raised-button
+              color="primary"
+              (click)="addOption(i)"
+            >
+              Add Opption
+            </button>
+          </div>
         </div>
-    </div>
-    <button mat-raised-button color="primary" (click)="addQuestion()" class="button">
-        Add Question
-    </button>
-    <button mat-raised-button color="primary" (click)="saveQuiz()" class="button">
-        Save
-    </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="addQuestion()"
+          class="button"
+        >
+          Add Question
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="saveQuiz()"
+          class="button"
+        >
+          Save
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

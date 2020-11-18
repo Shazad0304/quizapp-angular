@@ -4,7 +4,7 @@ import { QuestiongetterService } from "../questiongetter.service";
 import { timer } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { AuthguardService } from "../authguard.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { WebcamImage, WebcamInitError } from "ngx-webcam";
 import { Subject, Observable } from "rxjs";
 
@@ -23,10 +23,13 @@ export class MainContentComponent implements OnInit {
   Answers: IResults;
   user: any;
   check: boolean = false;
+  snaptime: number;
+  images: any[] = [];
   constructor(
     private getq: QuestiongetterService,
     private toastr: ToastrService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -34,20 +37,26 @@ export class MainContentComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       //dadbf46b-e316-4151-a7f4-66c7cee3ab35
-      const id = params["id"];
+      const id = params["id"].trim();
 
       if (id) {
         this.Answers = {
           code: id,
           attemptedBy: this.user.id,
           answers: [],
+          images: [],
         };
         this.getq
           .getQuizBycode(id)
           .then((x) => {
             console.log(x);
             this.data = x;
+            this.snaptime = this.getRandomInt(0, this.data.questions.length);
+            console.log(this.snaptime);
             this.data.questions = this.shuffle(this.data.questions);
+            this.data.questions.forEach((el, i) => {
+              this.data.questions[i].options = this.shuffle(el.options);
+            });
             this.startTimer();
           })
           .catch((err) => {
@@ -70,6 +79,13 @@ export class MainContentComponent implements OnInit {
   }
 
   changeq() {
+    if (this.count == this.snaptime) {
+      this.triggerSnapshot();
+      this.snaptime = this.getRandomInt(
+        this.snaptime,
+        this.data.questions.length
+      );
+    }
     if (this.count === this.data.questions.length - 1) {
       this.pauseTimer();
       this.check = true;
@@ -101,7 +117,6 @@ export class MainContentComponent implements OnInit {
         if (this.count === this.data.questions.length - 1) {
           this.pauseTimer();
           this.check = true;
-          this.triggerSnapshot();
           console.log(this.Answers);
           this.submitAnswers();
         } else {
@@ -113,6 +128,13 @@ export class MainContentComponent implements OnInit {
             this.toastr.error("Time Out", "", {
               timeOut: 2000,
             });
+          }
+          if (this.count == this.snaptime) {
+            this.triggerSnapshot();
+            this.snaptime = this.getRandomInt(
+              this.snaptime,
+              this.data.questions.length
+            );
           }
         }
         this.saveAnswer();
@@ -131,10 +153,12 @@ export class MainContentComponent implements OnInit {
   }
 
   submitAnswers() {
+    this.Answers.images = this.images;
     this.getq.saveAnswers(this.Answers).then((x) => {
       this.toastr.success("Submitted to instructor", "", {
         timeOut: 2000,
       });
+      this.router.navigate(["/login"])
     });
   }
 
@@ -162,6 +186,13 @@ export class MainContentComponent implements OnInit {
     return array;
   }
 
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+    return result > 0 ? result - 2 : result;
+  }
+
   //snap taking
 
   public webcamImage: WebcamImage = null;
@@ -171,6 +202,7 @@ export class MainContentComponent implements OnInit {
     this.trigger.next();
   }
   handleImage(webcamImage: WebcamImage): void {
+    this.images.push(webcamImage.imageAsDataUrl);
     console.info("received webcam image", webcamImage);
     this.webcamImage = webcamImage;
   }

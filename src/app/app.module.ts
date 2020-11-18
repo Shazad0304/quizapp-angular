@@ -25,12 +25,14 @@ import { CommonModule } from '@angular/common';
 import { AttemptedListModule } from './quiz-list/attempted-list/attempted-list.module';
 import {MatSelectModule} from '@angular/material/select';
 import {WebcamModule} from 'ngx-webcam';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainContentComponent,
-    LoginComponent
+    LoginComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

@@ -25,3 +25,47 @@
 .button {
   margin-top: 10px;
 }
+
+.example-card {
+  max-width: 600px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  /* CSS in here for mobile only */
+  .view{
+    display: flex;
+    justify-content: space-around;
+    margin: 0% 86px 10px 47px;
+    flex-direction:column;
+  }
+  .viewrules{
+    position: absolute;
+   margin-bottom: 20%;
+  }
+}
+
+@media (min-width: 769px) {
+  /* CSS in here for desktop only */
+  .view{
+    display: flex;
+    justify-content: space-around;
+    margin: 5% 0px 0px 0px
+  }
+  .viewrules{
+    position: fixed;
+      top: 15%;
+      left: 30%;
+      margin: auto;
+  }
+}
+
+
