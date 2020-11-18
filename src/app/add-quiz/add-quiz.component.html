@@ -21,13 +21,15 @@
             <p>Put correct answer in the first option</p>
             <mat-form-field
               appearance="outline"
-              *ngFor="let option of questions[i].options; let j = index"
+              *ngFor="let option of questions[i].options; let j = index;"
             >
               <mat-label>Option</mat-label>
               <input
                 matInput
                 type="text"
-                [(ngModel)]="questions[i].options[j]"
+                [ngModel]="questions[i].options[j]"
+                id="{{i+'-'+j}}"
+                (change)="onValueUpdate($event)"
               />
             </mat-form-field>
 

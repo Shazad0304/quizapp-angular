@@ -10,7 +10,7 @@ import { QuestiongetterService } from '../questiongetter.service';
 
 export class AddQuizComponent implements OnInit {
     entity:any = JSON.parse(localStorage.getItem("quiz-user"))
-    questions = [{question: '', options: ["option 1", "option 2"],correctoption:''}];
+    questions = [{question: '', options: [""],correctoption:''}];
     title: string = '';
 
     constructor(private service:QuestiongetterService,private router:Router){
@@ -25,7 +25,7 @@ export class AddQuizComponent implements OnInit {
     }
 
     addQuestion(){
-        this.questions.push({question: '', options: ["option 1", "option 2"],correctoption:''});
+        this.questions.push({question: '', options: [""],correctoption:''});
     }
 
 
@@ -39,5 +39,11 @@ export class AddQuizComponent implements OnInit {
             console.log(x)
             this.router.navigate(["/quiz-list"])
         })
+    }
+
+    onValueUpdate(event){
+        console.log(event.target.value, event.target.id);
+        const ij = event.target.id.split('-');
+        this.questions[ij[0]].options[ij[1]] = event.target.value;
     }
 }

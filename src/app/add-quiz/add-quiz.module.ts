@@ -14,7 +14,7 @@ const routes = [
     {
         path: 'addquiz',
         component: AddQuizComponent,
-        canActivate:[AuthguardteacherService]
+        //canActivate:[AuthguardteacherService]
     }
 ];
 
