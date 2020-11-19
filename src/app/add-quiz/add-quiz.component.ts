@@ -37,16 +37,16 @@ export class AddQuizComponent implements OnInit {
             this.toast.error("Please fill all the fields");
             return
         }
-        else if(this.questions.length < 10){
-            this.toast.error("Minimum 10 questions are required");
-            return
-        }
+        // else if(this.questions.length < 10){
+        //     this.toast.error("Minimum 10 questions are required");
+        //     return
+        // }
         this.questions.forEach((e,i) => {
             e.correctoption = e.options[0];
         })
         this.service.AddQuiz({title:this.title,questions:this.questions,createdBy:this.entity.id}).then(x => {
             console.log(x)
-            this.toast.success("Quiz Added Successfully")
+            this.toast.success("Quiz Added Successfully, Please share quiz code to participants")
             this.router.navigate(["/quiz-list"])
         }).catch(err => {
             console.log(err);
