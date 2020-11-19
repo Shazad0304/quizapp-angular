@@ -33,7 +33,7 @@ export class AddQuizComponent implements OnInit {
     saveQuiz(){
         console.log(this.title);
         console.log(this.questions);
-        if(!this.title && this.questions.findIndex(x => x.options.findIndex(i => i === "") > -1) > -1){
+        if(!this.title && this.questions.findIndex(x => x.options.findIndex(i => i === "") > -1 || x.question === "") > -1){
             this.toast.error("Please fill all the fields");
             return
         }

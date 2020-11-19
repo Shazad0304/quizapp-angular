@@ -4,7 +4,7 @@
       <div class="pad column" id="add-quiz">
         <div>
           <h3>Quiz Title</h3>
-          <mat-form-field appearance="outline">
+          <mat-form-field style="width: 70%;" appearance="outline">
             <mat-label>Title</mat-label>
             <input matInput type="text" [(ngModel)]="title" />
           </mat-form-field>
@@ -14,7 +14,7 @@
             <div style="display: flex; justify-content: space-between">
               <div class="column">
                 <h3>Question {{ i + 1 }}</h3>
-                <mat-form-field style="min-width: 200px" appearance="outline">
+                <mat-form-field style="min-width: 410px" appearance="outline">
                   <mat-label>Question</mat-label>
                   <textarea
                     matInput
@@ -38,7 +38,7 @@
               style="display: flex; justify-content: space-between"
               *ngFor="let option of questions[i].options; let j = index"
             >
-              <mat-form-field appearance="outline">
+              <mat-form-field style="width: 70%;" appearance="outline">
                 <mat-label>Option</mat-label>
                 <input
                   matInput
