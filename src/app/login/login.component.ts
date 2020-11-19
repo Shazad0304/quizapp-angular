@@ -70,6 +70,10 @@ export class LoginComponent implements OnInit {
       lastname: this.lname.value,
       usertype: this.userRole.value,
     };
+    if(this.checkProperties(payload)){
+      this.toastr.error("Please fill all the details");
+      return;
+    }
     this.data
       .Register(payload)
       .then((x) => {
@@ -91,5 +95,12 @@ export class LoginComponent implements OnInit {
     } else {
       this.toastr.error("Please enter valid code");
     }
+  }
+
+  checkProperties(obj) {
+    for (var key in obj) {
+      if (obj[key] !== null && obj[key] != "") return false;
+    }
+    return true;
   }
 }

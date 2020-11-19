@@ -1,4 +1,4 @@
-<div style="padding: 30px;">
+<div style="padding: 30px">
   <mat-card style="margin: auto" class="example-card mat-elevation-z4">
     <mat-card-content>
       <div class="pad column" id="add-quiz">
@@ -11,54 +11,82 @@
         </div>
         <div *ngFor="let q of questions; let i = index">
           <div class="column">
-            <h3>Question {{ i + 1 }}</h3>
-            <mat-form-field style="min-width: 200px" appearance="outline">
-              <mat-label>Question</mat-label>
-              <textarea matInput [(ngModel)]="questions[i].question"></textarea>
-            </mat-form-field>
+            <div style="display: flex; justify-content: space-between">
+              <div class="column">
+                <h3>Question {{ i + 1 }}</h3>
+                <mat-form-field style="min-width: 200px" appearance="outline">
+                  <mat-label>Question</mat-label>
+                  <textarea
+                    matInput
+                    [(ngModel)]="questions[i].question"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+              <button
+                mat-icon-button
+                aria-label="Example icon button with a vertical three dot icon"
+                *ngIf="i > 9"
+                (click)="deleteQues(i)"
+              >
+                <mat-icon>clear</mat-icon>
+              </button>
+            </div>
           </div>
           <div class="column">
             <p>Put correct answer in the first option</p>
-            <mat-form-field
-              appearance="outline"
-              *ngFor="let option of questions[i].options; let j = index;"
+            <div
+              style="display: flex; justify-content: space-between"
+              *ngFor="let option of questions[i].options; let j = index"
             >
-              <mat-label>Option</mat-label>
-              <input
-                matInput
-                type="text"
-                [ngModel]="questions[i].options[j]"
-                id="{{i+'-'+j}}"
-                (change)="onValueUpdate($event)"
-              />
-            </mat-form-field>
-
+              <mat-form-field appearance="outline">
+                <mat-label>Option</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  [ngModel]="questions[i].options[j]"
+                  id="{{ i + '-' + j }}"
+                  (change)="onValueUpdate($event)"
+                />
+              </mat-form-field>
+              <button
+                mat-icon-button
+                aria-label="Example icon button with a vertical three dot icon"
+                *ngIf="j > 1"
+                (click)="deleteoption(i, j)"
+              >
+                <mat-icon>clear</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div style="padding-bottom: 20px;">
             <button
               class="button"
               mat-raised-button
               color="primary"
               (click)="addOption(i)"
             >
-              Add Opption
+              Add Option
             </button>
           </div>
         </div>
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="addQuestion()"
-          class="button"
-        >
-          Add Question
-        </button>
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="saveQuiz()"
-          class="button"
-        >
-          Save
-        </button>
+        <div style="padding:20px 0px;display: flex;justify-content: space-between;">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addQuestion()"
+            class="button"
+          >
+            Add Question
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="saveQuiz()"
+            class="button"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

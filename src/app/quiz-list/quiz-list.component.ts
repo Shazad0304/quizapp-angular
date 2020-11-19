@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { QuestiongetterService } from '../questiongetter.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class QuizListComponent implements OnInit {
     pageIndex: Number = 0;
     pageLimit: Number[] = [5, 10, 25, 100];
 
-    constructor(private service:QuestiongetterService,private router:Router){
+    constructor(private service:QuestiongetterService,private router:Router,private toast:ToastrService){
 
     }
 
@@ -46,7 +47,11 @@ export class QuizListComponent implements OnInit {
     
     deletequiz(code){
         this.service.delquiz(code).then(x => {
+            this.toast.success("Deleted Successfully");
             this.ngOnInit();
+        })
+        .catch(err => {
+            this.toast.error("Something went wrong");
         })
     }
 
